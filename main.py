@@ -4,13 +4,19 @@ Jose Enrique Fernandez
 Refinando Código
 En este programa refinariamos el codigo para mejor calidad.
 """
+import sys
 
 def precios():
     """ Devuelve una lista de costos del archivo gift_costs.txt"""
     with open('gift_costs.txt', 'r', encoding='UTF-8') as archivo:
         precios_regalos = list(archivo)
-    precios_regalos = [int(c) for c in precios_regalos]  
-    archivo.close()  
+    try:
+      
+      precios_regalos = [int(c) for c in precios_regalos]  
+      archivo.close()
+    except ValueError:
+      print('Deben de ser digitos los datos')
+      sys.exit()
     return precios_regalos
 
 
